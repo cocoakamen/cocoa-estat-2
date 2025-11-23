@@ -1,0 +1,13 @@
+{
+    "cityCode": "33214",
+    "targets": [
+        {
+            "statsDataId": "0000020202",
+            "cdCat01": "B1106"
+        },
+        {
+            "statsDataId": "0000020201",
+            "cdCat01": "A1101"
+        }
+    ]
+}

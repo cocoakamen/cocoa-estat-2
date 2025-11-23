@@ -1,0 +1,22 @@
+{
+  "name": "cocoa-estat-2",
+  "version": "1.0.0",
+  "description": "e-Stat Data Fetcher",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "estat",
+    "api",
+    "data"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "csv-writer": "^1.6.0",
+    "winston": "^3.11.0",
+    "fs-extra": "^11.2.0"
+  }
+}

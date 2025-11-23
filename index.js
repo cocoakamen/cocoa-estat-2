@@ -1,0 +1,48 @@
+const { loadConfig } = require('./src/config');
+const { fetchData } = require('./src/api');
+const { logger, prepareDirectories, writeCsv } = require('./src/io');
+
+async function main() {
+    try {
+        logger.info('Starting e-Stat Data Fetcher...');
+
+        // 1. Load Config
+        const config = await loadConfig();
+
+        logger.info(`Target City Code: ${config.cityCode}`);
+        logger.info(`Number of Targets: ${config.targets.length}`);
+
+        // 2. Prepare Output
+        await prepareDirectories();
+
+        // 3. Fetch Data
+        const allData = [];
+        for (const target of config.targets) {
+            logger.info(`Fetching data for statsDataId: ${target.statsDataId}...`);
+            try {
+                const data = await fetchData(config.appId, config.cityCode, target);
+                if (data) {
+                    allData.push(...data);
+                }
+            } catch (err) {
+                logger.error(`Failed to fetch data for ${target.statsDataId}: ${err.message}`);
+            }
+        }
+
+        // 4. Write to CSV
+        if (allData.length > 0) {
+            logger.info(`Writing ${allData.length} records...`);
+            const filePath = await writeCsv(allData);
+            logger.info(`Saved to ${filePath}`);
+            logger.info('Done!');
+        } else {
+            logger.warn('No data fetched.');
+        }
+
+    } catch (error) {
+        logger.error(`Fatal Error: ${error.message}`);
+        process.exit(1);
+    }
+}
+
+main();
