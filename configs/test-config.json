@@ -1,10 +1,15 @@
 {
-    "cityCode": "33214",
+    "cityCode": "01202",
     "targets": [
         {
-            "description": "Test Data (Forest)",
+            "description": "森林面積",
             "statsDataId": "0000020202",
             "cdCat01": "B1106"
+        },
+        {
+            "description": "総人口",
+            "statsDataId": "0000020201",
+            "cdCat01": "A1101"
         }
     ]
 }

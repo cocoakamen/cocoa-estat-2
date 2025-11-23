@@ -2,14 +2,68 @@
     "cityCode": "33214",
     "targets": [
         {
+            "description": "人口",
+            "statsDataId": "0000020201",
+            "cdCat01": "A1101",
+            "cdTimeFrom": "2000100000"
+        },
+        {
+            "description": "世帯数",
+            "statsDataId": "0000020201",
+            "cdCat01": "A7101",
+            "cdTimeFrom": "2000100000"
+        },
+        {
+            "description": "一戸建て",
+            "statsDataId": "0000020208",
+            "cdCat01": "H1401",
+            "cdTimeFrom": "2000100000"
+        },
+        {
+            "description": "耕地面積（田）",
+            "statsDataId": "0003290724",
+            "cdCat01": "110"
+        },
+        {
+            "description": "耕地面積（畑）",
+            "statsDataId": "0003290724",
+            "cdCat01": "130"
+        },
+        {
+            "description": "製造業事業所数",
+            "statsDataId": "0000020203",
+            "cdCat01": "C3403",
+            "cdTimeFrom": "2020100000"
+        },
+        {
+            "description": "大型小売店",
+            "statsDataId": "0000020208",
+            "cdCat01": "H6132"
+        },
+        {
+            "description": "飲食店",
+            "statsDataId": "0000020208",
+            "cdCat01": "H6131"
+        },
+        {
+            "description": "病院数",
+            "statsDataId": "0000020209",
+            "cdCat01": "I5101"
+        },
+        {
+            "description": "一般診療所",
+            "statsDataId": "0000020209",
+            "cdCat01": "I5102"
+        },
+        {
+            "description": "小学校数",
+            "statsDataId": "0000020205",
+            "cdCat01": "E2101"
+        },
+        {
             "description": "森林面積",
             "statsDataId": "0000020202",
             "cdCat01": "B1106"
-        },
-        {
-            "description": "総人口",
-            "statsDataId": "0000020201",
-            "cdCat01": "A1101"
         }
     ]
 }
