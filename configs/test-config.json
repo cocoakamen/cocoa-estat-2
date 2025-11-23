@@ -1,0 +1,10 @@
+{
+    "cityCode": "33214",
+    "targets": [
+        {
+            "description": "Test Data (Forest)",
+            "statsDataId": "0000020202",
+            "cdCat01": "B1106"
+        }
+    ]
+}

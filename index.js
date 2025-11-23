@@ -7,7 +7,13 @@ async function main() {
         logger.info('Starting e-Stat Data Fetcher...');
 
         // 1. Load Config
-        const config = await loadConfig();
+        // Get config file path from command line args (e.g. node index.js my-config.json)
+        const configFilePath = process.argv[2];
+        if (configFilePath) {
+            logger.info(`Using config file: ${configFilePath}`);
+        }
+
+        const config = await loadConfig(configFilePath);
 
         logger.info(`Target City Code: ${config.cityCode}`);
         logger.info(`Number of Targets: ${config.targets.length}`);
@@ -18,7 +24,8 @@ async function main() {
         // 3. Fetch Data
         const allData = [];
         for (const target of config.targets) {
-            logger.info(`Fetching data for statsDataId: ${target.statsDataId}...`);
+            const label = target.description ? `${target.description} (${target.statsDataId})` : target.statsDataId;
+            logger.info(`Fetching data for: ${label}...`);
             try {
                 const data = await fetchData(config.appId, config.cityCode, target);
                 if (data) {

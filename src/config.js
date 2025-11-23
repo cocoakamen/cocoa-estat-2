@@ -1,15 +1,18 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-async function loadConfig() {
+async function loadConfig(configFilePath) {
     const secretPath = path.join(process.cwd(), 'secret.json');
-    const configPath = path.join(process.cwd(), 'estat-config.json');
+    // Use provided path or default
+    const configPath = configFilePath
+        ? path.resolve(process.cwd(), configFilePath)
+        : path.join(process.cwd(), 'configs', 'estat-config.json');
 
     if (!await fs.pathExists(secretPath)) {
         throw new Error('secret.json not found. Please create one with your appId.');
     }
     if (!await fs.pathExists(configPath)) {
-        throw new Error('estat-config.json not found.');
+        throw new Error(`Config file not found: ${configPath}`);
     }
 
     const secret = await fs.readJson(secretPath);
