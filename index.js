@@ -23,9 +23,12 @@ async function main() {
 
         // 3. Fetch Data
         const allData = [];
-        for (const target of config.targets) {
+        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        for (const [index, target] of config.targets.entries()) {
             const label = target.description ? `${target.description} (${target.statsDataId})` : target.statsDataId;
             logger.info(`Fetching data for: ${label}...`);
+
             try {
                 const data = await fetchData(config.appId, config.cityCode, target);
                 if (data) {
@@ -33,6 +36,11 @@ async function main() {
                 }
             } catch (err) {
                 logger.error(`Failed to fetch data for ${target.statsDataId}: ${err.message}`);
+            }
+
+            // Wait 1 second between requests, but not after the last one
+            if (index < config.targets.length - 1) {
+                await sleep(1000);
             }
         }
 
